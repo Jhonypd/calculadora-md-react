@@ -14,7 +14,7 @@
         <ul class="flex-row-center">
           <li><a href="./index.html">Calculadora</a></li>
           <li><a href="./form.html">Formulário</a></li>
-          <li><a href="">Outro</a></li>
+          <li><a href="#">Outro</a></li>
         </ul>
       </div>
     </header>
@@ -22,16 +22,45 @@
       <div class="forms-table">
         <form id="userForm">
           <div class="row-center">
-            <input type="text" name="username" id="username" />
             <label for="username">Nome</label>
+            <input type="text" name="username" id="username" required />
           </div>
           <div class="row-center">
-            <input type="text" name="age" id="age" />
-            <label for="age">Idade</label>
-          </div>
-          <div class="row-center">
-            <input type="text" name="city" id="city" />
             <label for="city">Cidade</label>
+            <select name="city" id="city" required>
+              <option value="">Selecione</option>
+              <option value="Florianópolis">Florianópolis</option>
+              <option value="Joinville">Joinville</option>
+              <option value="Blumenau">Blumenau</option>
+              <option value="São José">São José</option>
+              <option value="Chapecó">Chapecó</option>
+              <option value="Itajaí">Itajaí</option>
+              <option value="Criciúma">Criciúma</option>
+              <option value="Lages">Lages</option>
+              <option value="Jaraguá do Sul">Jaraguá do Sul</option>
+              <option value="Palhoça">Palhoça</option>
+              <option value="Balneário Camboriú">Balneário Camboriú</option>
+              <option value="Brusque">Brusque</option>
+              <option value="Tubarão">Tubarão</option>
+              <option value="São Bento do Sul">São Bento do Sul</option>
+              <option value="Caçador">Caçador</option>
+              <option value="Navegantes">Navegantes</option>
+              <option value="Gaspar">Gaspar</option>
+              <option value="Indaial">Indaial</option>
+              <option value="Araranguá">Araranguá</option>
+              <option value="Rio do Sul">Rio do Sul</option>
+            </select>
+          </div>
+          <div class="row-center">
+            <label>Sexo:</label>
+            <input type="radio" name="gender" id="masc" value="Masculino" required />
+            <label for="masc">Masculino</label>
+            <input type="radio" name="gender" id="fem" value="Feminino" required />
+            <label for="fem">Feminino</label>
+          </div>
+          <div class="row-center">
+            <label for="age">Maior de idade?</label>
+            <input type="checkbox" name="age" id="age" />
           </div>
           <div class="button-container">
             <button type="submit" class="button" id="submitButton">
@@ -46,15 +75,15 @@
           <thead>
             <tr>
               <th>Nome</th>
-              <th>Idade</th>
               <th>Cidade</th>
+              <th>Sexo</th>
+              <th>Maior de Idade</th>
             </tr>
           </thead>
           <tbody id="table-body"></tbody>
         </table>
       </div>
     </section>
-
     <script src="./js/forms-api.js"></script>
   </body>
 </html>

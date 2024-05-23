@@ -1,14 +1,15 @@
 /** @format */
 
 const users = [];
-
 const tableBody = document.getElementById("table-body");
 
-const addUser = (username, age, city) => {
-  if (!username || !age || !city) {
-    return;
-  }
-  const user = { username, age, city };
+const addUser = (username, city, gender, age) => {
+  const user = {
+    username,
+    city,
+    gender,
+    age: age ? "Sim" : "Não",
+  };
   users.push(user);
   updateTable();
 };
@@ -16,13 +17,15 @@ const addUser = (username, age, city) => {
 const updateTable = () => {
   tableBody.innerHTML = "";
 
-  users.map((user) => {
+  users.forEach((user) => {
+    console.log(user);
     const newRow = document.createElement("tr");
 
     newRow.innerHTML = `
-    <td>${user.username}</td>
-    <td>${user.age}</td>
-    <td>${user.city}</td>
+      <td>${user.username}</td>
+      <td>${user.city}</td>
+      <td>${user.gender}</td>
+      <td>${user.age}</td>
     `;
 
     tableBody.appendChild(newRow);
@@ -53,10 +56,11 @@ document.getElementById("userForm").addEventListener("submit", function (e) {
     toggleSpinner(false);
 
     const username = document.getElementById("username").value;
-    const age = document.getElementById("age").value;
     const city = document.getElementById("city").value;
+    const gender = document.querySelector('input[name="gender"]:checked').value;
+    const age = document.getElementById("age").checked;
 
-    addUser(username, age, city);
+    addUser(username, city, gender, age);
 
     document.getElementById("userForm").reset();
   }, 4000);
