@@ -1,0 +1,60 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulário</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="py">
+        <ul class="flex-row-center">
+          <li><a href="./index.html">Calculadora</a></li>
+          <li><a href="./form.html">Formulário</a></li>
+          <li><a href="">Outro</a></li>
+        </ul>
+      </div>
+    </header>
+    <section class="forms-api">
+      <div class="forms-table">
+        <form id="userForm">
+          <div class="row-center">
+            <input type="text" name="username" id="username" />
+            <label for="username">Nome</label>
+          </div>
+          <div class="row-center">
+            <input type="text" name="age" id="age" />
+            <label for="age">Idade</label>
+          </div>
+          <div class="row-center">
+            <input type="text" name="city" id="city" />
+            <label for="city">Cidade</label>
+          </div>
+          <div class="button-container">
+            <button type="submit" class="button" id="submitButton">
+              <span id="buttonText">Salvar</span>
+              <span class="spinner" id="spinner" style="display: none"></span>
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="table-container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Idade</th>
+              <th>Cidade</th>
+            </tr>
+          </thead>
+          <tbody id="table-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <script src="./js/forms-api.js"></script>
+  </body>
+</html>

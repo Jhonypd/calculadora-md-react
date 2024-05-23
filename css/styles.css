@@ -1,4 +1,7 @@
 /** @format */
+
+@import url("./forms.css");
+
 * {
   margin: 0;
   padding: 0;
@@ -6,19 +9,42 @@
 }
 body {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
   background-color: #f7f7f7;
+  font-family: "Helvetica Neue", sans-serif;
 }
+
+header {
+  position: fixed;
+  top: 0;
+}
+
+.flex-row-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  list-style: none;
+  padding: 20px 10px;
+}
+
+.flex-row-center a {
+  text-decoration: none;
+  font-size: x-large;
+  color: #020024;
+}
+
 .calculator {
   width: 90%;
   max-width: 300px;
   background-color: #464646;
   border-radius: 10px;
   box-shadow: 0px 4px 4px #00000040;
-  font-family: "Helvetica Neue", sans-serif;
   overflow: hidden;
+  margin-top: 80px;
 }
 .visor {
   padding: 1em;
