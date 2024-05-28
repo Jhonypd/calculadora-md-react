@@ -1,0 +1,15 @@
+/** @format */
+
+.visor {
+  padding: 1em;
+}
+.result {
+  background-color: #dddddd;
+  height: 75px;
+  min-height: 50px;
+  padding: 20px;
+  text-align: right;
+  color: #272727;
+  font-size: 2.5rem;
+  border-radius: 5px;
+}

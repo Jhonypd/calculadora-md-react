@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from "react";
 import { buttonValues } from "../../util/buttonValues.ts";
 import "./calculator.css";
+import VisorContainer from "../visor/visor.jsx";
+import Buttons from "../buttons/buttons.jsx";
 
 const AppCalculator = () => {
   const [currentNumber, setCurrentNumber] = useState("");
@@ -116,35 +118,16 @@ const AppCalculator = () => {
 
   return (
     <div className="AppCalculator">
-      <div className="view-result">
-        <h1 className="result">{updateResult()}</h1>
-      </div>
-      <div className="buttons">
-        {buttonValues.map((button, index) => (
-          <button
-            key={index}
-            className={`btn-number ${button.className}`}
-            value={button.label}
-            onClick={() => {
-              if (/^[0-9,]+$/.test(button.label)) {
-                addDigit(button.label);
-              } else if (["+", "-", "x", "÷"].includes(button.label)) {
-                handleOperator(button.label);
-              } else if (button.label === "=") {
-                calculate();
-              } else if (button.label === "C") {
-                clearCalculator();
-              } else if (button.label === "±") {
-                changeSign();
-              } else if (button.label === "%") {
-                percentage();
-              }
-            }}
-          >
-            {button.label}
-          </button>
-        ))}
-      </div>
+      <VisorContainer result={updateResult()} />
+      <Buttons
+        buttonValues={buttonValues}
+        addDigit={addDigit}
+        calculate={calculate}
+        changeSign={changeSign}
+        clearCalculator={clearCalculator}
+        handleOperator={handleOperator}
+        percentage={percentage}
+      />
     </div>
   );
 };
