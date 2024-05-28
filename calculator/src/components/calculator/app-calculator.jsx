@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { buttonValues } from "../../util/buttonValues.ts";
 import "./calculator.css";
 
@@ -9,6 +9,33 @@ const AppCalculator = () => {
   const [firstOperand, setFirstOperand] = useState(null);
   const [operator, setOperator] = useState(null);
   const [restart, setRestart] = useState(false);
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      const key = event.key;
+
+      if (/^[0-9]$/.test(key)) {
+        addDigit(key);
+      } else if (key === "," || key === ".") {
+        addDigit(",");
+      } else if (["+", "-", "x", "/", "*"].includes(key)) {
+        handleOperator(key === "*" ? "x" : key === "/" ? "÷" : key);
+      } else if (key === "Enter" || key === "=") {
+        calculate();
+      } else if (key === "Backspace") {
+        setCurrentNumber(currentNumber.slice(0, -1));
+      } else if (key === "Escape") {
+        clearCalculator();
+      } else if (key === "%") {
+        percentage();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [currentNumber, firstOperand, operator]);
 
   const updateResult = (originClear = false) => {
     return originClear ? "0" : currentNumber.replace(".", ",");
@@ -112,7 +139,8 @@ const AppCalculator = () => {
               } else if (button.label === "%") {
                 percentage();
               }
-            }}>
+            }}
+          >
             {button.label}
           </button>
         ))}
